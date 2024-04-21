@@ -131,7 +131,7 @@ function readTextFile(file) {
 
 
 function generatePrompt(cvText, jobSpecText) {
-    return `Please take the CV and job specification that I have provided and provide an alignment score out of 100, explaining the reasons for the score. Additionally, offer suggestions on how to amend the CV based on the feedback to better align it with the job requirements. Also, provide a rewritten professional summary to better align to the role. Finally, assuming you have a number of relevant candidate interviews lined up,  provide a likelihood of gettting an interview choosing from highly likely, likely, unlikely and highly unlikey. Please provide a reason for the interview likelihood too. Any output needs to be written in British English.
+    return `Please take the CV and job specification that I have provided and provide an alignment score out of 100, explaining the reasons for the score. Additionally, offer suggestions on how to amend the CV based on the feedback to better align it with the job requirements. Also, provide a rewritten professional summary to better align to the role. Any output needs to be written in British English.
 CV:
 ${cvText}
 
