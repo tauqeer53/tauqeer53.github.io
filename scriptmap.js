@@ -1,11 +1,32 @@
-// Initialize the map with your access token
-mapboxgl.accessToken = 'pk.eyJ1IjoidGFobWVkIiwiYSI6ImNqdTE3dmhhZTBkdDE0M28zemx0anpzamgifQ.NI2T75B6t-jXxM1ryGnZdA';
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/dark-v11',
-  center: [-0.118092, 51.509865], // Central London
-  zoom: 10 // Initial zoom level
-});
+let map = null;
+
+document.getElementById('update-map').addEventListener('click', () => {
+    const apiKey = document.getElementById('api-key').value;
+    
+    if (apiKey) {
+      mapboxgl.accessToken = apiKey;
+      
+      if (!map) {
+        map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/dark-v11',
+          center: [-0.118092, 51.509865], // Central London
+          zoom: 10 // Initial zoom level
+        });
+        
+        map.on('click', onMapClick);
+      }
+      
+      if (marker) {
+        const lngLat = marker.getLngLat();
+        updateIsochrone(lngLat);
+      } else {
+        alert('Please click on the map to place a marker and see catchments.');
+      }
+    } else {
+      alert('Please enter a valid Mapbox API key.');
+    }
+  });
 
 // Add this code after initializing the map
 const searchInput = document.getElementById('search-input');
@@ -17,7 +38,7 @@ searchButton.addEventListener('click', () => {
 });
 
 function geocodeQuery(query) {
-  const apiKey = 'pk.eyJ1IjoidGFobWVkIiwiYSI6ImNqdTE3dmhhZTBkdDE0M28zemx0anpzamgifQ.NI2T75B6t-jXxM1ryGnZdA';
+  const apiKey = document.getElementById('api-key').value;
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(query)}.json?access_token=${apiKey}`;
 
   fetch(url)
@@ -177,7 +198,9 @@ function loadOutputAreaCentroids() {
           type: 'FeatureCollection',
           features
         };
-        updateOutputAreas();
+        if (map) {
+            updateOutputAreas();
+          }
       })
       .catch(error => logError(error, 'Error loading output area centroids.'));
   }
@@ -348,14 +371,6 @@ function updateSummaryStats(outputAreas) {
     }
   }
 
-map.on('click', onMapClick);
-document.getElementById('update-map').addEventListener('click', () => {
-  if (marker) {
-    const lngLat = marker.getLngLat();
-    updateIsochrone(lngLat);
-  } else {
-    alert('Please click on the map to place a marker and see catchments.');
-  }
-});
+
 loadCensusFeatures();
 loadOutputAreaCentroids();
