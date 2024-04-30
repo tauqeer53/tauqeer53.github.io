@@ -123,7 +123,6 @@ function onMapClick(event) {
 
 function updateIsochrone(lngLat) {
   const apiKey = document.getElementById('api-key').value;
-  //const apiKey = 'pk.eyJ1IjoidGFobWVkIiwiYSI6ImNqdTE3dmhhZTBkdDE0M28zemx0anpzamgifQ.NI2T75B6t-jXxM1ryGnZdA';
   const driveTime = document.getElementById('drive-time').value;
   //const driveTime = 20;
 
