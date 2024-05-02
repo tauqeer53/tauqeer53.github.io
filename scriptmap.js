@@ -142,18 +142,18 @@ function updateIsochrone(lngLat) {
         map.removeLayer('isochrone');
         map.removeSource('isochrone');
       }
-    //   map.addLayer({
-    //     id: 'isochrone',
-    //     type: 'fill',
-    //     source: {
-    //       type: 'geojson',
-    //       data: data
-    //     },
-    //     paint: {
-    //       'fill-color': '#00766f',
-    //       'fill-opacity': 0.5
-    //     }
-    //   });
+       map.addLayer({
+         id: 'isochrone',
+         type: 'fill',
+         source: {
+           type: 'geojson',
+           data: data
+         },
+         paint: {
+           'fill-color': '#00766f',
+           'fill-opacity': 0.5
+         }
+       });
     const bounds = turf.bbox(data);
     map.fitBounds(bounds, { padding: 50 });
       updateOutputAreas();
