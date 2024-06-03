@@ -8,7 +8,7 @@ searchButton.addEventListener('click', searchNews);
 function searchNews() {
     const apiKey = apiKeyInput.value;
     const companyName = searchInput.value;
-    const url = `https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=${encodeURIComponent(companyName)}&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(companyName)}&apiKey=${apiKey}`;
 
     fetch(url)
         .then(response => response.json())
