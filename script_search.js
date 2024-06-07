@@ -23,6 +23,7 @@ form.addEventListener('submit', (event) => {
  
     fetch(apiUrl, {
         method: 'POST',
+        mode: 'no-cors',
         headers: customHeaders,
         body: JSON.stringify(data)
     })
