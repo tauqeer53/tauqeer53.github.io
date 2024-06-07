@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coresignal API Search</title>
+<link rel="stylesheet" href="styles_search.css">
+</head>
+<body>
+<div class="container">
+<h1>Coresignal API Search</h1>
+<form id="searchForm">
+<label for="apiKey">API Key:</label>
+<input type="text" id="apiKey" name="apiKey" required>
+ 
+            <label for="companyUrl">Company's LinkedIn Page:</label>
+<input type="text" id="companyUrl" name="companyUrl" required>
+ 
+            <label for="country">Country:</label>
+<input type="text" id="country" name="country" required>
+ 
+            <label for="jobTitle">Job Title:</label>
+<input type="text" id="jobTitle" name="jobTitle" required>
+ 
+            <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+</div>
+<script src="script_search.js"></script>
+</body>
+</html>
