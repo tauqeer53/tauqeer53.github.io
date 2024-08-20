@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demographic Explorer</title>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css">
+  <link rel="stylesheet" href="stylesoac.css">
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@2.3.0"></script>
+
+
+  
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h2>Demographics Explorer</h2>
+  
+      <div class="form-group">
+        <label for="mapbox-api-key">Mapbox API Key</label>
+        <input type="text" id="mapbox-api-key" placeholder="Enter Mapbox API key">
+      </div>
+  
+      <div class="form-group">
+        <label for="isochrone-type">Isochrone Type</label>
+        <select id="isochrone-type">
+          <option value="time">Drive Time</option>
+          <option value="distance">Distance</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="isochrone-value">Value</label>
+        <input type="number" id="isochrone-value" min="1" max="60" value="15">
+        <span id="isochrone-unit">minutes</span>
+      </div>
+  
+      <button id="update-map">Update Map</button>
+  
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search location">
+        <button id="search-button">Search</button>
+      </div>
+  
+      <div class="toggle-controls">
+        <button id="toggle-isochrone">Toggle Isochrone</button>
+        <button id="toggle-output-areas">Toggle Output Areas</button>
+      </div>
+
+      <div id="treemap-container"></div>
+  
+      <div class="summary-stats">
+        <h3>Summary Stats</h3>
+        <div id="summary-stats"></div>
+      </div>
+    </div>
+  
+    <div id="map"></div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  
+  <script src="scriptoac.js"></script>
+</body>
+</html>
