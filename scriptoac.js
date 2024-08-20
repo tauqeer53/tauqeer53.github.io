@@ -59,7 +59,7 @@ document.getElementById('update-map').addEventListener('click', () => {
             try {
                 map = new mapboxgl.Map({
                     container: 'map',
-                    style: 'mapbox://styles/mapbox/dark-v11', // Changed to light style
+                    style: 'mapbox://styles/mapbox/satellite-streets-v12', // Changed to light style
                     center: [-0.118092, 51.509865], // Central London
                     zoom: 10 // Initial zoom level
                 });
